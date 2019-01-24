@@ -18,4 +18,11 @@ def meaning(word):
         return "No such word exists!"
 
 query = input("Enter a word : ")
-print(meaning(query))
+
+#printing the meaning 
+output = meaning(query)
+if type(output) ==  list :
+    for item in output:
+        print("# "+item)
+else :
+    print(output)
