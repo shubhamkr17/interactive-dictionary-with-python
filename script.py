@@ -8,9 +8,14 @@ def meaning(word):
     if word in data.keys():
         return data[word]
     elif len(get_close_matches(word,data.keys(),cutoff=0.8))>0 :
-        return "Did you mean '%s' ???" % get_close_matches(word,data.keys(),cutoff=0.8)[0]
+        match = get_close_matches(word,data.keys(),cutoff=0.8)[0]
+        choice = input("Did you mean '%s' ??? \nEnter Y if Yes or N if No : " %match )
+        if choice in ['Y','y']:
+            return data[match]
+        else :
+            return "No such word exists!"
     else :
-        return "No such word exists"
+        return "No such word exists!"
 
 query = input("Enter a word : ")
 print(meaning(query))
